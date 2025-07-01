@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %} – Meeting Rooms</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <nav class="bg-white shadow">
+    <div class="container mx-auto px-4 py-3">
+      <a href="{{ url_for('index') }}" class="text-xl font-bold text-gray-800">Meeting Room Booker</a>
+    </div>
+  </nav>
+
+  <main class="container mx-auto px-4 py-8">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="space-y-2 mb-6">
+          {% for category, message in messages %}
+            <div
+              class="px-4 py-2 rounded 
+                     {{ 'bg-green-100 text-green-800' if category == 'success' else '' }}
+                     {{ 'bg-red-100   text-red-800'   if category == 'error'   else '' }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

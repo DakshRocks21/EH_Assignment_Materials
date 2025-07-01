@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Rooms Overview{% endblock %}
+
+{% block content %}
+  <h2 class="text-2xl font-semibold mb-6">Rooms and Bookings</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {% for room in rooms %}
+      <div class="bg-white shadow rounded p-4">
+        <h3 class="text-xl font-bold mb-3">{{ room.name }}</h3>
+        <a href="{{ url_for('book', room_id=room.id) }}" class="inline-block mb-3 text-blue-600 hover:underline">Book this room</a>
+        {% if bookings[room.id] %}
+          <ul class="space-y-2">
+            {% for b in bookings[room.id] %}
+              <li class="border p-2 rounded">
+                <div><strong>Date:</strong> {{ b.date }}</div>
+                <div><strong>Time:</strong> {{ b.start }} - {{ b.end }}</div>
+                <div><strong>Booked by:</strong> {{ b.booked_by }}</div>
+              </li>
+            {% endfor %}
+          </ul>
+        {% else %}
+          <p class="text-gray-500">No bookings yet.</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+book

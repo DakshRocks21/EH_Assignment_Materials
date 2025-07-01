@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Book {{ room.name }}{% endblock %}
+
+{% block content %}
+<h2 class="text-2xl font-semibold mb-6">Book {{ room.name }}</h2>
+
+<div class="flex space-x-8">
+  <form action="" method="POST" class="w-1/2 bg-white shadow rounded p-6">
+    <label class="block mb-3">
+      <span class="block text-gray-700 font-medium mb-1">Date</span>
+      <input type="date" name="date" required value="{{ form_data.date if form_data else '' }}"
+        class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </label>
+
+    <label class="block mb-3">
+      <span class="block text-gray-700 font-medium mb-1">Start Time</span>
+      <input type="time" name="start" required value="{{ form_data.start if form_data else '' }}"
+        class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </label>
+
+    <label class="block mb-3">
+      <span class="block text-gray-700 font-medium mb-1">End Time</span>
+      <input type="time" name="end" required value="{{ form_data.end if form_data else '' }}"
+        class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </label>
+
+    <label class="block mb-6">
+      <span class="block text-gray-700 font-medium mb-1">Booked By</span>
+      <input type="text" name="booked_by" placeholder="Your name" required
+        value="{{ form_data.booked_by if form_data else '' }}"
+        class="w-full border border-gray-300 rounded p-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    </label>
+
+    <div class="flex space-x-4">
+      <button type="submit" name="action" value="preview"
+        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 transition">
+        Preview
+      </button>
+      <button type="submit" name="action" value="confirm"
+        class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">
+        Confirm
+      </button>
+      <a href="{{ url_for('index') }}" class="ml-4 text-gray-600 hover:underline self-center">Cancel</a>
+    </div>
+  </form>
+
+  <div class="w-1/2 bg-gray-50 p-6 rounded shadow-inner">
+    <h3 class="text-xl font-semibold mb-4">Booking Preview</h3>
+
+    {% if preview %}
+    <p><strong>Date:</strong> {{ preview.date }}</p>
+    <p><strong>Time:</strong> {{ preview.start }} – {{ preview.end }}</p>
+    <p><strong>Booked by:</strong>
+      {{ preview.booked_by | safe }}
+    </p>
+    {% else %}
+    <p class="text-gray-500">Fill out the form and click “Preview” to see your booking here.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

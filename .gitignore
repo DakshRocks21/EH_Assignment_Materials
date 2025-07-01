@@ -1,0 +1,3 @@
+venv/
+meeting_rooms.db
+__pycache__/
