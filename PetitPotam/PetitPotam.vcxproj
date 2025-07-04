@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="efsr_h.h" />
+    <ClInclude Include="ms-dtyp.h" />
     <ClInclude Include="ms-dtyp_h.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

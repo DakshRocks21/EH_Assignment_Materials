@@ -37,5 +37,8 @@
     <ClInclude Include="ms-dtyp_h.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ms-dtyp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
