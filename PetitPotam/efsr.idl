@@ -1,0 +1,29 @@
+import "ms-dtyp.idl";
+
+[
+    uuid(df1941c5-fe89-4e79-bf10-463657acf44d),
+    version(1.0),
+]
+
+interface efsrpc
+{
+    typedef [context_handle] void* PEXIMPORT_CONTEXT_HANDLE;
+    typedef pipe unsigned char EFS_EXIM_PIPE;
+
+    long EfsRpcOpenFileRaw(
+        [in]            handle_t                   binding_h,
+        [out]           PEXIMPORT_CONTEXT_HANDLE* hContext,
+        [in, string]    wchar_t* FileName,
+        [in]            long                       Flags
+    );
+
+    long EfsRpcReadFileRaw(
+        [in]            PEXIMPORT_CONTEXT_HANDLE   hContext,
+        [out]           EFS_EXIM_PIPE* EfsOutPipe
+    );
+
+    long EfsRpcEncryptFileSrv(
+        [in]            handle_t    binding_h,
+        [in, string]    wchar_t* FileName
+    );
+}
