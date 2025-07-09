@@ -2,7 +2,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-url     = "http://localhost:5000/book/1"
+url     = "http://135.235.193.119:5000/book/1"
 session = requests.Session()
 
 while True:

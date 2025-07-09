@@ -1,0 +1,14 @@
+{
+  "secret": "skibidisigma",
+  "projects": {
+    "AvidTennisCoach/Internal-Client-Management-Software": {
+      "path": "C:/srv/widgets",
+      "service": "WidgetsSvc"
+    },
+    "AvidTennisCoach/test": {
+      "path": "C:\\Users\\KSI\\projects\\test",
+      "service": "testproject"
+    }
+  }
+}
+
