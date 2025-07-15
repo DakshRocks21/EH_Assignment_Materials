@@ -1,0 +1,3 @@
+[submodule "firefox_password_decrypt"]
+	path = "firefox_password_decrypt"
+	url = https://github.com/DakshRocks21/firefox_password_decrypt
