@@ -5,7 +5,6 @@
 
 int wmain(int argc, wchar_t* argv[])
 {
-
     if (argc != 3) {
         printf("Usage: PetitPotam.exe [captureIP] [targetIP]");
     }
