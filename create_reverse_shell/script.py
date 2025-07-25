@@ -1,14 +1,10 @@
-
 import base64
 
 
-with open("second.ps1", "r", encoding="utf-8") as f:
+with open("phase3.ps1", "r", encoding="utf-8") as f:
     text = f.read()
 utf16le_bytes = text.encode("utf-16le")
 encoded = base64.b64encode(utf16le_bytes).decode("utf-8")
-
-
-
 
 
 def beta(data):
