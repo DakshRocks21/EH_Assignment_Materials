@@ -6,7 +6,7 @@ $RemoteHost       = '135.235.193.119'
 
 
 $tunnels = @(
-#    @{ RemotePort = 2222; Local = '10.10.1.6:22' },
+    @{ RemotePort = 2222; Local = '10.10.1.6:22' },
     @{ RemotePort = 2223; Local = 'localhost:22' }
 )
 
