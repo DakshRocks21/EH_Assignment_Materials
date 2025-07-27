@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-# webhook_listener.py
-#
-# • Clone / update repos on GitHub push
-# • Install requirements
-# • Manage each Flask app with Supervisor (no admin rights needed)
-
-###############################################################################
-# Imports
-###############################################################################
 import hmac
 import hashlib
 import json
@@ -20,23 +10,14 @@ from typing import Dict, Any
 
 from flask import Flask, request, abort
 
-###############################################################################
-# Configuration
-###############################################################################
 CONFIG_PATH = Path(__file__).with_name("config.json")
 CONFIG: Dict[str, Any] = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
 
-SECRET: bytes = CONFIG["secret"].encode()  # GitHub webhook secret
+SECRET: bytes = CONFIG["secret"].encode() 
 SUPERVISOR_CONF_DIR = Path(CONFIG["supervisor_conf_dir"])
 
-###############################################################################
-# Flask-app skeleton
-###############################################################################
 app = Flask(__name__)
 
-###############################################################################
-# Utility: run a shell / list command and raise on error
-###############################################################################
 def run(cmd: str | list[str]) -> None:
     """
     Run a command and raise if non-zero exit status.
@@ -51,18 +32,12 @@ def run(cmd: str | list[str]) -> None:
     if proc.stdout:
         logging.info(proc.stdout.strip())
 
-###############################################################################
-# HMAC signature check
-###############################################################################
 def signature_ok(raw: bytes, header: str | None) -> bool:
     if header is None or not header.startswith("sha256="):
         return False
     expected = "sha256=" + hmac.new(SECRET, raw, hashlib.sha256).hexdigest()
     return hmac.compare_digest(expected, header)
 
-###############################################################################
-# ----------  SUPERVISOR HELPERS  ----------
-###############################################################################
 def supervisor_program_exists(name: str) -> bool:
     """Return True if Supervisor already knows about *name*."""
     try:
@@ -104,9 +79,6 @@ def supervisor_reload() -> None:
 def restart_supervisor_program(name: str) -> None:
     run(["supervisorctl", "restart", name])
 
-###############################################################################
-# ----------  FIRST-RUN BOOTSTRAP  ----------
-###############################################################################
 def bootstrap_all_projects() -> None:
     """
     Ensure every project in config.json is cloned, dependencies installed,
@@ -140,9 +112,6 @@ def bootstrap_all_projects() -> None:
         # 4 · (Re)start program so the new code is running
         restart_supervisor_program(program)
 
-###############################################################################
-# ----------  FLASK ROUTES  ----------
-###############################################################################
 @app.get("/")
 def index() -> str:
     return "Webhook server is running.\n"
@@ -188,9 +157,7 @@ def webhook() -> str:
 
     return "ok\n"
 
-###############################################################################
-# ----------  MAIN  ----------
-###############################################################################
+
 if __name__ == "__main__":
     logging.basicConfig(
         level=logging.INFO,
@@ -201,7 +168,6 @@ if __name__ == "__main__":
     # First-run bootstrap
     bootstrap_all_projects()
 
-    # Waitress is cross-platform and works on Windows
     from waitress import serve
     host, port = ("0.0.0.0", 8000) if len(sys.argv) < 3 else (sys.argv[1], int(sys.argv[2]))
     logging.info("Listening on http://%s:%s", host, port)
