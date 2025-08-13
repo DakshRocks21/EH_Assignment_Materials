@@ -53,6 +53,13 @@ if (Test-Path $exploitFolder) {
     Write-Output "No exploit folder found in Temp."
 }
 
+try {
+    Set-MpPreference -ScanPurgeItemsAfterDelay 1
+}
+catch {
+    Write-Warning "Failed to set Microsoft Defender preferences!"
+}
+
 # Self-delete
 Write-Output "Deleting this script"
 $myself = $MyInvocation.MyCommand.Path
