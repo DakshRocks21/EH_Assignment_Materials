@@ -4,11 +4,11 @@
 > Everything here has either happened before or is a POC of a real vulnerability.
 
 ## Storyline
-[Company name] is a tech company specialising in software development. They recently hired an intern with the GitHub alias AvidTennisCoach, who is a Y3 IT intern from Ngee Ann Poly. He was part of a team who built applications for clients, including his first major project Tennis Booking Website.
+DAR Solutions is a tech company specialising in software development. They recently hired an intern with the GitHub alias AvidTennisCoach, who is a Y3 IT intern from Ngee Ann Poly. He was part of a team who built applications for clients, including his first major project Tennis Booking Website.
 
-Having recently had a pentest done by internal pentesters, many of the simple low hanging fruits and misconfigurations have been fixed by [Company name]'s sysadmin team, making the Active Directory network more secure and harder to hack (with the least secure configurations being the defaults).
+Having recently had a pentest done by internal pentesters, many of the simple low hanging fruits and misconfigurations have been fixed by DAR Solutions' sysadmin team, making the Active Directory network more secure and harder to hack (with the least secure configurations being the defaults).
 
-With the recent cybersecurity developments around the world, [Company name] has invited us to conduct another round of pentests in an effort to secure their infrastructure from the evolving cybersecurity threat landscape.
+With the recent cybersecurity developments around the world, DAR Solutions has invited us to conduct another round of pentests in an effort to secure their infrastructure from the evolving cybersecurity threat landscape.
 
 ## Pentest setup
 > [!NOTE]
